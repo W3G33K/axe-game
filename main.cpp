@@ -25,6 +25,8 @@ int main() {
 	const int axe_y_bb_top = (axe_y);
 	const int axe_y_bb_bottom = (axe_y + axe_size);
 
+	bool has_collided = false;
+
 	InitWindow(width, height, "Look ma, no hands!");
 	SetTargetFPS(60);
 
@@ -32,20 +34,24 @@ int main() {
 		BeginDrawing();
 		ClearBackground(PURPLE);
 
-		DrawCircle(circle_x, circle_y, circle_radius, BLUE);
-		DrawRectangle(axe_x, axe_y, axe_size, axe_size, RED);
+		if (has_collided) {
+			DrawText("Game Over!", ((width / 2) - 58), (height / 2), 24, WHITE);
+		} else {
+			DrawCircle(circle_x, circle_y, circle_radius, BLUE);
+			DrawRectangle(axe_x, axe_y, axe_size, axe_size, RED);
 
-		axe_y = (axe_y + axe_direction);
-		if ((axe_y <= 0) || ((axe_y + axe_size) >= height)) {
-			axe_direction = -axe_direction;
-		}
+			axe_y = (axe_y + axe_direction);
+			if ((axe_y <= 0) || ((axe_y + axe_size) >= height)) {
+				axe_direction = -axe_direction;
+			}
 
-		if (IsKeyDown(KEY_A) && circle_x >= (0 + circle_radius)) {
-			circle_x = (circle_x - 8);
-		}
+			if (IsKeyDown(KEY_A) && circle_x >= (0 + circle_radius)) {
+				circle_x = (circle_x - 8);
+			}
 
-		if (IsKeyDown(KEY_D) && circle_x <= (width - circle_radius)) {
-			circle_x = (circle_x + 8);
+			if (IsKeyDown(KEY_D) && circle_x <= (width - circle_radius)) {
+				circle_x = (circle_x + 8);
+			}
 		}
 
 		EndDrawing();

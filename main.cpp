@@ -4,20 +4,28 @@
  * External Libraries must be included with double quotes ("file.h") where as Standard Libraries must be included with angle brackets (<file>).
  **/
 
-int main(int argc, char** argv) {
+int main() {
 	int width = 350;
 	int height = 200;
 
-	int centerX = (width / 2);
-	int centerY = (height / 2);
+	int circle_x = (width / 2);
+	int circle_y = (height / 2);
 
 	InitWindow(width, height, "Look ma, no hands!");
+	SetTargetFPS(60);
 
 	while (!WindowShouldClose()) {
 		BeginDrawing();
 		ClearBackground(PURPLE);
 
-		DrawCircle(centerX, centerY, 32, BLUE);
+		DrawCircle(circle_x, circle_y, 32, BLUE);
+		if (IsKeyDown(KEY_A)) {
+			circle_x = (circle_x - 8);
+		}
+
+		if (IsKeyDown(KEY_D)) {
+			circle_x = (circle_x + 8);
+		}
 
 		EndDrawing();
 	}

@@ -10,6 +10,7 @@ int main() {
 
 	int circle_x = (width / 2);
 	int circle_y = (height / 2);
+	const int circle_radius = 32;
 
 	InitWindow(width, height, "Look ma, no hands!");
 	SetTargetFPS(60);
@@ -18,12 +19,12 @@ int main() {
 		BeginDrawing();
 		ClearBackground(PURPLE);
 
-		DrawCircle(circle_x, circle_y, 32, BLUE);
-		if (IsKeyDown(KEY_A)) {
+		DrawCircle(circle_x, circle_y, circle_radius, BLUE);
+		if (IsKeyDown(KEY_A) && circle_x > (0 + circle_radius)) {
 			circle_x = (circle_x - 8);
 		}
 
-		if (IsKeyDown(KEY_D)) {
+		if (IsKeyDown(KEY_D) && circle_x < (width - circle_radius)) {
 			circle_x = (circle_x + 8);
 		}
 

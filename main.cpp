@@ -5,6 +5,9 @@
  **/
 
 int main(void) {
-	InitWindow(350, 200, "Look ma, no hands!");
+	int width = 350;
+	int height = 200;
+
+	InitWindow(width, height, "Look ma, no hands!");
 	return 0;
 }

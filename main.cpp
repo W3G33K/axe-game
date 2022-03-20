@@ -11,11 +11,19 @@ int main() {
 	int circle_x = (width / 2);
 	int circle_y = (height / 2);
 	const int circle_radius = 32;
+	const int circle_x_bb_left = (circle_x - circle_radius);
+	const int circle_x_bb_right = (circle_x + circle_radius);
+	const int circle_y_bb_top = (circle_y - circle_radius);
+	const int circle_y_bb_bottom = (circle_y + circle_radius);
 
 	int axe_direction = 10;
 	int axe_x = 200;
 	int axe_y = 0;
-	const int axe_size = 64;	
+	const int axe_size = 64;
+	const int axe_x_bb_left = (axe_x);
+	const int axe_x_bb_right = (axe_x + axe_size);
+	const int axe_y_bb_top = (axe_y);
+	const int axe_y_bb_bottom = (axe_y + axe_size);
 
 	InitWindow(width, height, "Look ma, no hands!");
 	SetTargetFPS(60);

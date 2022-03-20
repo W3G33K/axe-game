@@ -9,7 +9,7 @@ int main(int argc, char** argv) {
 	int height = 200;
 
 	InitWindow(width, height, "Look ma, no hands!");
-	while (true) {
+	while (!WindowShouldClose()) {
 		BeginDrawing();
 		ClearBackground(PURPLE);
 		EndDrawing();

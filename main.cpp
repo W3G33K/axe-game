@@ -11,21 +11,28 @@ int main() {
 	int circle_x = (width / 2);
 	int circle_y = (height / 2);
 	const int circle_radius = 32;
-	const int circle_x_bb_left = (circle_x - circle_radius);
-	const int circle_x_bb_right = (circle_x + circle_radius);
-	const int circle_y_bb_top = (circle_y - circle_radius);
-	const int circle_y_bb_bottom = (circle_y + circle_radius);
+
+	int circle_x_bb_left = (circle_x - circle_radius);
+	int circle_x_bb_right = (circle_x + circle_radius);
+	int circle_y_bb_top = (circle_y - circle_radius);
+	int circle_y_bb_bottom = (circle_y + circle_radius);
 
 	int axe_direction = 10;
 	int axe_x = 200;
 	int axe_y = 0;
 	const int axe_size = 64;
-	const int axe_x_bb_left = (axe_x);
-	const int axe_x_bb_right = (axe_x + axe_size);
-	const int axe_y_bb_top = (axe_y);
-	const int axe_y_bb_bottom = (axe_y + axe_size);
 
-	bool has_collided = false;
+	int axe_x_bb_left = (axe_x);
+	int axe_x_bb_right = (axe_x + axe_size);
+	int axe_y_bb_top = (axe_y);
+	int axe_y_bb_bottom = (axe_y + axe_size);
+
+	bool has_collided = (
+		(axe_y_bb_bottom >= circle_y_bb_top) &&
+		(axe_y_bb_top <= circle_y_bb_bottom) &&
+		(axe_x_bb_left <= circle_x_bb_right) &&
+		(axe_x_bb_right >= circle_x_bb_left)
+	);
 
 	InitWindow(width, height, "Look ma, no hands!");
 	SetTargetFPS(60);
@@ -37,6 +44,23 @@ int main() {
 		if (has_collided) {
 			DrawText("Game Over!", ((width / 2) - 58), (height / 2), 24, WHITE);
 		} else {
+			circle_x_bb_left = (circle_x - circle_radius);
+			circle_x_bb_right = (circle_x + circle_radius);
+			circle_y_bb_top = (circle_y - circle_radius);
+			circle_y_bb_bottom = (circle_y + circle_radius);
+
+			axe_x_bb_left = (axe_x);
+			axe_x_bb_right = (axe_x + axe_size);
+			axe_y_bb_top = (axe_y);
+			axe_y_bb_bottom = (axe_y + axe_size);
+
+			has_collided = (
+				(axe_y_bb_bottom >= circle_y_bb_top) &&
+				(axe_y_bb_top <= circle_y_bb_bottom) &&
+				(axe_x_bb_left <= circle_x_bb_right) &&
+				(axe_x_bb_right >= circle_x_bb_left)
+			);
+
 			DrawCircle(circle_x, circle_y, circle_radius, BLUE);
 			DrawRectangle(axe_x, axe_y, axe_size, axe_size, RED);
 
